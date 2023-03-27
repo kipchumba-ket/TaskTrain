@@ -1,0 +1,386 @@
+@font-face {
+  font-family: poppins-light;
+  src: url(../fonts/Poppins-Light.ttf);
+}
+
+#dashboard-container {
+  height: 100vh;
+  width: 100%;
+  background-color: aqua;
+  display: flex;
+}
+
+.col-body {
+  height: 100%;
+  width: 100vw;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  /* transform: translate(-12%); */
+}
+
+.col-body .row-nav {
+  width: 100%;
+  height: calc(10% - 1px);
+  background-color: var(--nav-bg);
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.col-body .row-body {
+  width: 100%;
+  background-color: var(--main-body-bg);
+  flex-grow: 2;
+}
+
+.col-nav {
+  position: relative;
+  height: 100%;
+  width: 0%;
+  min-width: 250px;
+  background-color: var(--nav-bg);
+  border-right: 1px solid var(--border-color);
+  transition: 300ms ease;
+  transform: translate(var(--nav-width));
+}
+
+.col-nav .row-logo {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.col-nav .row-logo h1 {
+  color: var(--main-body-text-color);
+  margin-left: 25px;
+}
+
+.col-nav .row-logo h1 span {
+  color: var(--alert-text);
+  margin-left: 5px;
+}
+
+.col-nav .row-boards {
+  height: auto;
+  box-sizing: border-box;
+  color: var(--nav-text-color);
+}
+
+.col-nav .row-boards > h5 {
+  margin: 0;
+  height: 2em;
+  margin-left: 25px;
+  margin-top: 15px;
+  letter-spacing: 3px;
+  font-weight: 400;
+  transition-delay: 300ms;
+}
+
+.col-nav .boards-list {
+  width: 100%;
+  height: 30em;
+  overflow-y: scroll;
+  margin-top: 15px;
+  overflow-x: hidden;
+}
+
+.col-nav .boards-list::-webkit-scrollbar {
+background-color: var(--nav-bg);
+width: 1em;
+}
+
+.col-nav .boards-list::-webkit-scrollbar-thumb {
+  background-color: #23232d;
+}
+
+.col-nav .add-board {
+  cursor: pointer;
+  width: 14em;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  padding-left: 20px;
+  transition: 300ms ease;
+  position: relative;
+  color: var(--alert-text);
+}
+
+.col-nav .add-board:hover {
+  background-color: var(--board-hover-bg);
+}
+
+.col-nav .add-board:hover #create-arrow {
+  right: 20px;
+  opacity: 1;
+}
+
+.add-board h5 {
+  letter-spacing: 1px;
+  margin-left: 4px;
+  font-weight: 300;
+}
+
+#create-arrow {
+  position: absolute;
+  right: 30px;
+  font-size: 14px;
+  transition: 300ms ease;
+  opacity: 0;
+}
+
+.col-nav .board {
+  cursor: pointer;
+  width: 14em;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  padding-left: 20px;
+  transition: 300ms ease;
+  position: relative;
+}
+
+.col-nav .board:hover {
+  background-color: var(--board-hover-bg);
+}
+
+.col-nav .board::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 2%;
+  left: 0;
+  background-color: var(--buttons-bg);
+  visibility: hidden;
+}
+
+.col-nav .board:hover::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  left: 0;
+  background-color: var(--buttons-bg);
+  visibility: visible;
+}
+
+.col-nav .board h5 {
+  letter-spacing: 1px;
+  margin-left: 4px;
+  font-weight: 900;
+  z-index: 30;
+  display: block;
+  transition-delay: 1000ms;
+}
+
+.col-nav .board i {
+  z-index: 30;
+  transition-delay: 300ms;
+}
+
+.col-nav .row-settings {
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.col-nav .row-settings div {
+  width: 20%;
+  height: 60%;
+  border-radius: 50%;
+  background-color: #21212d;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.col-nav #theme-container {
+  color: yellow;
+  margin-left: 25px;
+}
+
+
+
+/* ADD NEW BOARD FORM */
+
+
+#add-board-form {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgb(47, 53, 69, 0.5);
+  background: rgba(255, 255, 255 , 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(1px); */
+  display: flex;
+  z-index: -1;
+  justify-content: center;
+  align-items: center;
+}
+
+#add-board-form form {
+  position: relative;
+  width: 25%;
+  height: auto;
+  background-color: #181822;
+}
+
+#add-board-form form .dash-form-title {
+  color: var(--main-body-text-color);
+  margin-left: 20px;
+}
+
+.dash-form-group{
+  width: 85%;
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: 2em;
+}
+
+.dash-form-group input{
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  padding : 8px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  outline: none;
+  color: var(--nav-text-color);
+}
+
+.dash-form-group input::placeholder{
+  color: transparent;
+}
+
+.dash-form-label{
+  position: absolute;
+  color: #acacac;
+  pointer-events: none;
+  top: 5px;
+  left: 4px;
+  font-weight: 200;
+  padding: 0 3px;
+  font-size: 16px;
+  transition: all 200ms ease;
+}
+
+.dash-form-group input:focus + .dash-form-label,
+.dash-form-group input:not(:placeholder-shown) + .dash-form-label
+{
+transform: translate(4px, -15px);
+font-size: 14px;
+background-color: #181822;
+}
+
+.dash-form-button{
+  width: 90%;
+  margin-left: 25px;
+  padding: 5px;
+  font-size: 18px;
+  background-color: var(--buttons-bg);
+  color: var(--main-body-text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#form-close-icon{
+position: absolute;
+color: var(--main-body-text-color);
+top: 10px;
+right: 10px;
+font-size: 20px;
+cursor: pointer;
+}
+
+
+
+/* BOARD MESSAGES CONTAINER */
+
+#board-status-messages{
+  position: absolute;
+  height: auto;
+  bottom: 60px;
+  right: 60px;
+  height: 2.5em;
+  width: 20em;
+}
+
+.notification{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 300ms ease;
+}
+
+.notification h4{
+  font-weight: 100;
+  color: azure;
+}
+
+.notification i{
+  position: absolute;
+  right: 13px;
+  font-weight: 100;
+  color: azure;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.notification:before{
+  position: absolute;
+  content: '';
+  height: 100%;
+  left: 0;
+  width: 3%;
+  border-top-left-radius:2px;
+  border-bottom-left-radius:2px;
+}
+
+
+#board-success-notification{
+  background-color: #53a847;
+}
+
+#board-success-notification:before{
+  background-color: #356d2e;
+}
+
+#board-error-notification{
+  background-color: red;
+}
+
+#board-error-notification:before{
+  background-color: rgb(144, 19, 19);
+}
+
+/* active and inactive states */
+
+.inactive{
+  opacity: 0;
+}
+
+.active{
+  opacity: 1;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .col-nav {
+    display: none;
+  }
+  .col-body {
+    width: 100%;
+  }
+}
